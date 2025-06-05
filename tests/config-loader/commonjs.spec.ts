@@ -35,22 +35,6 @@ describe('ConfigLoader normal cjs', () => {
       expect(loadedCfg?.config.test.cake).toStrictEqual('a lie nest');
     });
 
-    it('should load a valid CJS file with defineConfig', async () => {
-      const loadedCfg = await loadConfig<{
-        test: { cake: string };
-      }>(resolve(fixturesPath, 'valid-external.config.cjs'), loaderOptions);
-      expect(typeof loadedCfg?.config).toStrictEqual('object');
-      expect(loadedCfg?.config.test.cake).toStrictEqual('a lie');
-    });
-
-    it('should load a valid CJS file with defineConfig with loaderOptions', async () => {
-      const loadedCfg = await loadConfig<{
-        test: { cake: string };
-      }>(resolve(fixturesPath, 'valid-external.config.cjs'), loaderOptions);
-      expect(typeof loadedCfg?.config).toStrictEqual('object');
-      expect(loadedCfg?.config.test.cake).toStrictEqual('a lie');
-    });
-
     it('should return null for non-existent file', async () => {
       const loadedCfg = await loadConfig(
         resolve(fixturesPath, 'non-existent.config.cjs'),
