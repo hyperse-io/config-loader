@@ -203,6 +203,11 @@ interface LoaderOptions {
   tsconfig?: string; // Path to tsconfig.json
   plugins?: Plugin[]; // Additional plugins
   externals: Array<RegExp | string>; // External dependencies to exclude
+  // The function to create your custom loaders.
+  createLoaders?: (
+    options?: LoaderOptions,
+    searchFrom?: string
+  ) => Record<string, Loader>;
 }
 ```
 
