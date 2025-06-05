@@ -1,0 +1,87 @@
+{
+  "name": "@hyperse/config-loader",
+  "version": "1.0.0",
+  "description": "A TypeScript path alias resolver for Node.js applications that works seamlessly with both development (config-loader) and production environments. This package automatically resolves path aliases based on your `tsconfig.json` configuration, eliminating the need for complex relative imports.",
+  "keywords": [
+    "hyperse",
+    "typescript",
+    "esm",
+    "config loader",
+    "cjs",
+    "type:module"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:hyperse-io/config-loader.git"
+  },
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "require": "./dist/index.cjs",
+      "import": "./dist/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "types": "./dist/index.d.ts",
+  "files": [
+    "./bin/",
+    "./dist/",
+    "./index.js"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "next": "next build",
+    "lint": "eslint .",
+    "lint-fix": "yarn lint --fix",
+    "test": "run-s test-unit",
+    "test-unit": "vitest run",
+    "test-task": "vitest run",
+    "typecheck": "tsc --project ./tsconfig.json --noEmit",
+    "lint-staged-files": "lint-staged --allow-empty",
+    "changeset": "changeset",
+    "release": "yarn build && changeset publish",
+    "cz": "cz",
+    "prepare": "husky"
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
+  },
+  "dependencies": {
+    "@hyperse/unplugin-swc": "^1.0.1",
+    "@swc/core": "^1.11.31",
+    "cosmiconfig": "^9.0.0",
+    "get-tsconfig": "^4.10.1",
+    "globby": "^14.1.0",
+    "pkg-dir": "^8.0.0",
+    "ts-essentials": "^10.0.4"
+  },
+  "devDependencies": {
+    "@changesets/changelog-github": "^0.5.1",
+    "@changesets/cli": "^2.29.4",
+    "@commitlint/cli": "^19.8.1",
+    "@commitlint/config-conventional": "^19.8.1",
+    "@hyperse/eslint-config-hyperse": "^1.4.4",
+    "@types/node": "^22.15.29",
+    "commitizen": "^4.3.1",
+    "cz-conventional-changelog": "^3.3.0",
+    "eslint": "^9.28.0",
+    "execa": "^9.6.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.1.0",
+    "npm-run-all": "^4.1.5",
+    "rollup": "^4.41.1",
+    "tsup": "^8.5.0",
+    "typescript": "^5.8.3",
+    "vitest": "^3.1.4"
+  },
+  "packageManager": "yarn@4.9.1",
+  "engines": {
+    "node": ">=20"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

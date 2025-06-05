@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "compilerOptions": {
+    "baseUrl": "./",
+    "paths": {
+      "@/alias": ["assets.ts"],
+      "@armit/config-loader": [
+        "../../../../src/index.ts"
+      ]
+    }
+  }
+}

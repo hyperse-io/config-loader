@@ -1,0 +1,19 @@
+{
+  "extends": "@hyperse/eslint-config-hyperse/tsconfig.base.json",
+  "compilerOptions": {
+    "baseUrl": "./",
+    "outDir": "dist",
+    "rootDir": ".",
+    "types": ["vitest/globals", "node"],
+    "paths": {
+      "@hyperse/config-loader": ["./src/index.js"]
+    }
+  },
+  "include": [
+    "scripts/build.ts",
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "dist"
+  ]
+}
