@@ -6,13 +6,16 @@ export const createLoaders = (
   options?: LoaderOptions,
   searchFrom?: string
 ): Record<string, Loader> => {
+  const overrideLoaders = options?.createLoaders?.(options, searchFrom);
+
   return {
-    '.ts': myLoader(options, searchFrom),
-    '.mts': myLoader(options, searchFrom),
+    '.ts': createTsLoader(options, searchFrom),
+    '.mts': createTsLoader(options, searchFrom),
+    ...overrideLoaders,
   };
 };
 
-function myLoader(options?: LoaderOptions, searchFrom?: string): Loader {
+function createTsLoader(options?: LoaderOptions, searchFrom?: string): Loader {
   return async (path: string, content: string) => {
     const { projectCwd, ...restLoaderOptions } = options || {};
     return tsLoader({

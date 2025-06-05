@@ -17,7 +17,9 @@ A config loader that searches for and loads configuration files for your program
   </a>
 </p>
 
-A TypeScript path alias resolver for Node.js applications that works seamlessly with both development and production environments. This package automatically resolves path aliases based on your `tsconfig.json` configuration, eliminating the need for complex relative imports.
+The config loader is a powerful utility that searches for and loads configuration files for your JavaScript/TypeScript applications. It automatically handles multiple file formats and module systems while providing type safety.
+
+Built on top of cosmiconfig, it implements smart defaults aligned with JavaScript ecosystem conventions, while remaining highly configurable. You can customize search paths, file formats, and loading behavior to match your specific needs.
 
 ## Features
 

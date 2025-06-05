@@ -803,6 +803,8 @@ __metadata:
     tsup: "npm:^8.5.0"
     typescript: "npm:^5.8.3"
     vitest: "npm:^3.1.4"
+  peerDependencies:
+    rollup: ">=4.0.0"
   languageName: unknown
   linkType: soft
 
