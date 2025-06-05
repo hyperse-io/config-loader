@@ -31,18 +31,18 @@
   ],
   "scripts": {
     "build": "tsup",
-    "next": "next build",
+    "changeset": "changeset",
+    "cz": "cz",
     "lint": "eslint .",
     "lint-fix": "yarn lint --fix",
-    "test": "run-s test-unit",
-    "test-unit": "vitest run",
-    "test-task": "vitest run",
-    "typecheck": "tsc --project ./tsconfig.json --noEmit",
     "lint-staged-files": "lint-staged --allow-empty",
-    "changeset": "changeset",
+    "next": "next build",
+    "prepare": "husky",
     "release": "yarn build && changeset publish",
-    "cz": "cz",
-    "prepare": "husky"
+    "test": "run-s test-unit",
+    "test-task": "vitest run",
+    "test-unit": "vitest run",
+    "typecheck": "tsc --project ./tsconfig.json --noEmit"
   },
   "config": {
     "commitizen": {
@@ -51,11 +51,10 @@
   },
   "dependencies": {
     "@hyperse/unplugin-swc": "^1.0.1",
+    "@manypkg/get-packages": "^3.0.0",
     "@swc/core": "^1.11.31",
     "cosmiconfig": "^9.0.0",
     "get-tsconfig": "^4.10.1",
-    "globby": "^14.1.0",
-    "pkg-dir": "^8.0.0",
     "ts-essentials": "^10.0.4"
   },
   "devDependencies": {
