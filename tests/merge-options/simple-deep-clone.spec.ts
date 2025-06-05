@@ -1,4 +1,4 @@
-import { simpleDeepClone } from '../../src/merge-options/simple-deep-clone.js';
+import { simpleDeepClone } from '../../src/merge-options/simpleDeepClone.js';
 
 describe('simpleDeepClone()', () => {
   it('clones a simple flat object', () => {

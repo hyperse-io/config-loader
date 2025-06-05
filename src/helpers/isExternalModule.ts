@@ -3,6 +3,7 @@ import { builtinModules, isBuiltin } from 'node:module';
 const ensureSlash = (str: string) => {
   return str.replace(/\/$/, '') + '/';
 };
+
 /**
  * Indicate which modules should be treated as external
  * @param externalModules the external modules we have known from package.json
@@ -18,14 +19,14 @@ export const isExternalModule = (
   // `@scope/module`
   const isScopeModule = /@.+\/.+/.test(moduleId);
 
-  // Note while we use `babel-plugin-import` it will tranform `@dimjs/utils` to precise down to the module level
-  // e.g. import { classNames } from '@dimjs/utils'; will be use transform to.
-  // import _classNames from '@dimjs/utils/esm/class-names'; we should flag `@dimjs/utils/esm/class-names` to external.
+  // Note while we use `babel-plugin-import` it will tranform `@hps/utils` to precise down to the module level
+  // e.g. import { classNames } from '@hps/utils'; will be use transform to.
+  // import _classNames from '@hps/utils/esm/class-names'; we should flag `@hps/utils/esm/class-names` to external.
   if (isScopeModule) {
     return (
       // `@scope/module` exact match
       externalModules.includes(moduleId) ||
-      // `@scope/.*`, moduleId: `@dimjs/utils/esm/class-names`
+      // `@scope/.*`, moduleId: `@hps/utils/esm/class-names`
       !!externalModules.find((externalModule) => {
         if (typeof externalModule === 'string') {
           return moduleId.startsWith(ensureSlash(externalModule));

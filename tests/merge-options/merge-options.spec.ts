@@ -1,4 +1,4 @@
-import { mergeOptions } from '../../src/merge-options/merge-options.js';
+import { mergeOptions } from '../../src/merge-options/mergeOptions.js';
 
 describe('mergeOptions()', () => {
   it('creates a new object reference', () => {

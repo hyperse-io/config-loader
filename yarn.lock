@@ -802,7 +802,7 @@ __metadata:
     ts-essentials: "npm:^10.0.4"
     tsup: "npm:^8.5.0"
     typescript: "npm:^5.8.3"
-    vitest: "npm:^3.1.4"
+    vitest: "npm:^3.2.1"
   peerDependencies:
     rollup: ">=4.0.0"
   languageName: unknown
@@ -8797,7 +8797,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vitest@npm:^3.1.4":
+"vitest@npm:^3.2.1":
   version: 3.2.1
   resolution: "vitest@npm:3.2.1"
   dependencies:

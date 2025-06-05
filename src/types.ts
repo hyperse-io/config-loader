@@ -1,9 +1,13 @@
-import type { Loader } from 'cosmiconfig';
+import type { CosmiconfigResult, Loader } from 'cosmiconfig';
 import { type Plugin } from 'rollup';
 
 export interface ConfigBundler {
   bundle(fileName: string): Promise<{ code: string }>;
 }
+
+export type ConfigLoadResult<T> = Omit<CosmiconfigResult, 'config'> & {
+  config: T;
+};
 
 export type LoaderOptions = {
   /**

@@ -1,14 +1,14 @@
 import { resolve } from 'node:path';
 import { type ConfigBundler } from '../types.js';
-import { bundleConfigFile } from './bundle-config-file.js';
-import { loadConfigFromBundledFile } from './load-config-from-bundled-file.js';
+import { bundleConfigFile } from './bundleConfigFile.js';
+import { loadConfigFromBundledFile } from './loadConfigFromBundledFile.js';
 
 export async function loadConfigFromFile(
   configFile: string,
   bundler?: ConfigBundler
 ): Promise<{
   resolvedPath: string;
-  config;
+  config: any;
 }> {
   let resolvedPath: string | undefined;
 

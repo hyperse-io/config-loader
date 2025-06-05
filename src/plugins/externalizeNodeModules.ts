@@ -1,5 +1,5 @@
 import type { Plugin } from 'rollup';
-import { isExternalModule } from '../helpers/is-external-module.js';
+import { isExternalModule } from '../helpers/isExternalModule.js';
 
 /**
  * Implemented as a plugin instead of the external API

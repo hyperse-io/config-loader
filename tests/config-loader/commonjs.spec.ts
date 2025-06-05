@@ -1,8 +1,5 @@
 import { resolve } from 'node:path';
-import {
-  loadConfig,
-  searchConfig,
-} from '../../src/config-loader/config-loader.js';
+import { loadConfig, searchConfig } from '../../src/config-loader/index.js';
 import { type LoaderOptions } from '../../src/types.js';
 import { getDirname } from '../test-utils.js';
 

@@ -1,12 +1,6 @@
 import { cosmiconfig } from 'cosmiconfig';
-import { type CosmiconfigResult } from 'cosmiconfig/dist/types.js';
-import { existsSync } from 'fs';
-import { type LoaderOptions } from '../types.js';
-import { createLoaders } from './create-loaders.js';
-
-type ConfigLoadResult<T> = Omit<CosmiconfigResult, 'config'> & {
-  config: T;
-};
+import { type ConfigLoadResult, type LoaderOptions } from '../types.js';
+import { createLoaders } from './createLoaders.js';
 
 /**
  * Search up the directory tree, checking each of these places in each directory, until it finds some acceptable configuration (or hits the home directory).
@@ -40,23 +34,6 @@ export const searchConfig = async <T = any>(
     loaders: createLoaders(options, searchFrom),
   });
   return explorer.search(searchFrom).then((result) => {
-    return result as ConfigLoadResult<T> | null;
-  });
-};
-
-export const loadConfig = async <T = any>(
-  configFile: string,
-  options?: LoaderOptions
-) => {
-  if (!existsSync(configFile)) {
-    return null;
-  }
-
-  const explorer = cosmiconfig('', {
-    loaders: createLoaders(options),
-  });
-
-  return explorer.load(configFile).then((result) => {
     return result as ConfigLoadResult<T> | null;
   });
 };

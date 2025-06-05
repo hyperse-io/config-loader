@@ -3,7 +3,7 @@ import {
   isClassInstance,
   isObject,
   simpleDeepClone,
-} from './simple-deep-clone.js';
+} from './simpleDeepClone.js';
 
 const needMerge = (source: any, mergeUndefined?: boolean) => {
   return !(typeof source === 'undefined' && !mergeUndefined);

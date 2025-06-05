@@ -1,1 +1,2 @@
-export * from './config-loader.js';
+export * from './loadConfig.js';
+export * from './searchConfig.js';

@@ -1,9 +1,9 @@
 import { rollup } from 'rollup';
 import { unpluginSwc } from '@hyperse/unplugin-swc';
-import { getTsconfig } from '../helpers/get-tsconfig.js';
 import { getPackageDependencyKeys } from '../helpers/getPackageDependencyKeys.js';
-import { externalizeNodeModules } from '../plugins/externalize-node-modules.js';
-import { resolveTsconfigPaths } from '../plugins/resolve-tsconfig-paths.js';
+import { getTsconfig } from '../helpers/getTsconfig.js';
+import { externalizeNodeModules } from '../plugins/externalizeNodeModules.js';
+import { resolveTsconfigPaths } from '../plugins/resolveTsconfigPaths.js';
 import { type ConfigBundler, type LoaderOptions } from '../types.js';
 
 export const createConfigBundler: (

@@ -1,10 +1,10 @@
-import { isExternalModule } from '../src/helpers/is-external-module.js';
+import { isExternalModule } from '../src/helpers/isExternalModule.js';
 
-describe('is-external-module.ts', () => {
+describe('isExternalModule', () => {
   it('Should correct check scoped modules', () => {
     const tests: Array<[string, boolean]> = [
-      ['@wine/core', true],
-      ['@dimjs/utils', true],
+      ['@hps/core', true],
+      ['@hps/utils', true],
       ['~/my-module/utils', false],
       ['@mymouldes/', false],
     ];
@@ -17,24 +17,24 @@ describe('is-external-module.ts', () => {
   it('Should correct resolve external modules', () => {
     const tests: Array<[Array<RegExp | string>, string, boolean]> = [
       [[], 'fs', true],
-      [['vite'], '@wines/core', false],
+      [['vite'], '@hps/core', false],
       [['vite'], '@/core', false],
-      [['@wine/core', '@dimjs/utils'], '@wine/core', true],
-      [['@wine/core', '@dimjs/utils'], '@wine/utils', false],
-      [['@wine/core', '@dimjs/utils'], '@wine/core/esm/class-names', true],
-      [['@wine/core', '@dimjs/lang'], '@dimjs/lang/dist/is-array.js', true],
+      [['@hps/core', '@hyperse/utils'], '@hps/core', true],
+      [['@hps/core', '@hyperse/utils'], '@hps/utils', false],
+      [['@hps/core', '@hyperse/utils'], '@hps/core/esm/class-names', true],
+      [['@hps/core', '@hyperse/lang'], '@hyperse/lang/dist/is-array.js', true],
       [['rollup', '@rollup/plugin-alias'], './rollup', false],
       [['react', 'react-shadow-scope'], 'react', true],
       [['react'], 'react-shadow-scope', false],
       [['react', 'react-shadow-scope'], 'react-shadow-scope', true],
-      [[/^@flatjs\/.*/], '@flatjs/plugin-a', true],
-      [['@flatjs/*'], '@flatjs/forge-plugin-styling', false],
-      [['@flatjs/*'], '@flatjs/plugin-styling', false],
-      [['@flatjs/forge'], '@flatjs/forge', true],
-      [['@flatjs/forge'], '@flatjs/forge-less-plugin-import-alias', false],
-      [['flatjs-plugin-a'], 'flatjs-plugin-a', true],
-      [['flatjs-plugin-*'], 'flatjs-plugin-a', false],
-      [['flatjs-plugin-a'], 'flatjs-plugin-a-b', false],
+      [[/^@hps\/.*/], '@hps/plugin-a', true],
+      [['@hps/*'], '@hps/forge-plugin-styling', false],
+      [['@hps/*'], '@hps/plugin-styling', false],
+      [['@hps/forge'], '@hps/forge', true],
+      [['@hps/forge'], '@hps/forge-less-plugin-import-alias', false],
+      [['hps-plugin-a'], 'hps-plugin-a', true],
+      [['hps-plugin-*'], 'hps-plugin-a', false],
+      [['hps-plugin-a'], 'hps-plugin-a-b', false],
       [['next'], 'next', true],
       [['next'], 'next/server.js', true],
       [['next'], 'next/header.js', true],

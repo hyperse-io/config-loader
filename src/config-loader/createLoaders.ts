@@ -1,5 +1,5 @@
 import type { Loader } from 'cosmiconfig';
-import { tsLoader } from '../loaders/ts-loader.js';
+import { tsLoader } from '../loaders/tsLoader.js';
 import { type LoaderOptions } from '../types.js';
 
 export const createLoaders = (

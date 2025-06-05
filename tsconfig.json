@@ -9,11 +9,5 @@
       "@hyperse/config-loader": ["./src/index.js"]
     }
   },
-  "include": [
-    "scripts/build.ts",
-    "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
-    "dist"
-  ]
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "dist"]
 }
