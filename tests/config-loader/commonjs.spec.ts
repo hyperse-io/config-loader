@@ -38,7 +38,7 @@ describe('ConfigLoader normal cjs', () => {
     it('should load a valid CJS file with defineConfig', async () => {
       const loadedCfg = await loadConfig<{
         test: { cake: string };
-      }>(resolve(fixturesPath, 'valid-external.config.cjs'));
+      }>(resolve(fixturesPath, 'valid-external.config.cjs'), loaderOptions);
       expect(typeof loadedCfg?.config).toStrictEqual('object');
       expect(loadedCfg?.config.test.cake).toStrictEqual('a lie');
     });
