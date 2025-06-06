@@ -798,7 +798,6 @@ __metadata:
     lint-staged: "npm:^16.1.0"
     npm-run-all: "npm:^4.1.5"
     rollup: "npm:^4.41.1"
-    ts-essentials: "npm:^10.0.4"
     tsup: "npm:^8.5.0"
     typescript: "npm:^5.8.3"
     vitest: "npm:^3.2.1"
@@ -8235,18 +8234,6 @@ __metadata:
   peerDependencies:
     typescript: ">=4.8.4"
   checksum: 10/02e55b49d9617c6eebf8aadfa08d3ca03ca0cd2f0586ad34117fdfc7aa3cd25d95051843fde9df86665ad907f99baed179e7a117b11021417f379e4d2614eacd
-  languageName: node
-  linkType: hard
-
-"ts-essentials@npm:^10.0.4":
-  version: 10.0.4
-  resolution: "ts-essentials@npm:10.0.4"
-  peerDependencies:
-    typescript: ">=4.5.0"
-  peerDependenciesMeta:
-    typescript:
-      optional: true
-  checksum: 10/f0853472370340e7752d4d4ccb18c0289b31c30526674ace288b02c77c6434b9aff04bd7cb55af406dd6f1f66b0a794bb6794c0d7c83e63aadc5d443147e6d60
   languageName: node
   linkType: hard
 

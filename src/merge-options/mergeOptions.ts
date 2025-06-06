@@ -1,4 +1,4 @@
-import { type DeepPartial } from 'ts-essentials';
+import type { DeepPartial } from '../types.js';
 import {
   isClassInstance,
   isObject,
