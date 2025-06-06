@@ -1,5 +1,13 @@
 # @hyperse/config-loader
 
+## 1.0.3
+
+### Patch Changes
+
+- [`42e3e18`](https://github.com/hyperse-io/config-loader/commit/42e3e1874e0c724542c70e7abb692782d35815fb) Thanks [@tianyingchun](https://github.com/tianyingchun)! - replace correct `DeepPartial`
+
+- [`6aa46d2`](https://github.com/hyperse-io/config-loader/commit/6aa46d2669ce67d19974ed91c932c79b1368041d) Thanks [@tianyingchun](https://github.com/tianyingchun)! - refactor codes
+
 ## 1.0.2
 
 ### Patch Changes
