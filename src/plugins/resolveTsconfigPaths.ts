@@ -4,8 +4,10 @@ import type { Plugin } from 'rollup';
 const name = 'hps-resolve-tsconfig-paths';
 
 const isRelative = (filePath: string) => filePath[0] === '.';
+
 const isAbsolute = (filePath: string) =>
   filePath[0] === '/' || /^[\s\S]:/.test(filePath);
+
 const isImports = (filePath: string) => filePath[0] === '#';
 
 const testFileExtensions = [
@@ -54,7 +56,7 @@ export const resolveTsconfigPaths = (tsconfig: TsConfigResult): Plugin => {
         isImports(id) ||
         id.startsWith('\0')
       ) {
-        return null;
+        return undefined;
       }
       const possiblePaths = pathsMatcher(id);
       const allPossiblePaths = makeAvailablePaths(possiblePaths ?? []);
@@ -67,7 +69,7 @@ export const resolveTsconfigPaths = (tsconfig: TsConfigResult): Plugin => {
           return resolved;
         }
       }
-      return null;
+      return undefined;
     },
   };
 };

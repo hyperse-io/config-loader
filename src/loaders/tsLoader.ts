@@ -1,5 +1,5 @@
 import type { Loader } from 'cosmiconfig';
-import { createConfigBundler } from '../config-loader/createConfigBundler.js';
+import { createConfigBundler } from '../helpers/createConfigBundler.js';
 import { loadConfigFromFile } from '../helpers/loadConfigFromFile.js';
 import { type LoaderOptions } from '../types.js';
 

@@ -1,6 +1,6 @@
 import { cosmiconfig } from 'cosmiconfig';
+import { createLoaders } from '../helpers/createLoaders.js';
 import { type ConfigLoadResult, type LoaderOptions } from '../types.js';
-import { createLoaders } from './createLoaders.js';
 
 /**
  * Search up the directory tree, checking each of these places in each directory, until it finds some acceptable configuration (or hits the home directory).

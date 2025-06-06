@@ -1,10 +1,10 @@
 import { rollup } from 'rollup';
 import { unpluginSwc } from '@hyperse/unplugin-swc';
-import { getPackageDependencyKeys } from '../helpers/getPackageDependencyKeys.js';
-import { getTsconfig } from '../helpers/getTsconfig.js';
 import { externalizeNodeModules } from '../plugins/externalizeNodeModules.js';
 import { resolveTsconfigPaths } from '../plugins/resolveTsconfigPaths.js';
 import { type ConfigBundler, type LoaderOptions } from '../types.js';
+import { getPackageDependencyKeys } from './getPackageDependencyKeys.js';
+import { getTsconfig } from './getTsconfig.js';
 
 export const createConfigBundler: (
   options: LoaderOptions

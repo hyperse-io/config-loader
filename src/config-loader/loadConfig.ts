@@ -1,7 +1,7 @@
 import { cosmiconfig } from 'cosmiconfig';
 import { existsSync } from 'node:fs';
+import { createLoaders } from '../helpers/createLoaders.js';
 import { type ConfigLoadResult, type LoaderOptions } from '../types.js';
-import { createLoaders } from './createLoaders.js';
 
 export const loadConfig = async <T = any>(
   configFile: string,

@@ -3,7 +3,7 @@
   "compilerOptions": {
     "baseUrl": "./",
     "paths": {
-      "@/alias": ["assets.ts"],
+      "@/alias/*": ["./dir/*", "./dir2/*"],
       "@armit/config-loader": [
         "../../../../src/index.ts"
       ]

@@ -76,9 +76,6 @@
     "typescript": "^5.8.3",
     "vitest": "^3.2.1"
   },
-  "peerDependencies": {
-    "rollup": ">=4.0.0"
-  },
   "packageManager": "yarn@4.9.1",
   "engines": {
     "node": ">=20"

@@ -8,6 +8,7 @@ export default defineConfig((options) => ({
   clean: true,
   minify: false,
   treeshake: true,
+  external: ['rollup'],
   tsconfig: './tsconfig.build.json',
   format: ['esm'],
 }));
