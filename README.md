@@ -199,16 +199,21 @@ Configuration options for the loader:
 
 ```typescript
 interface LoaderOptions {
-  projectCwd?: string; // Project root directory
-  tsconfig?: string; // Path to tsconfig.json
-  plugins?: Plugin[]; // Additional plugins
-  externals?: Array<RegExp | string>; // External dependencies to exclude
-  externalExclude?: (moduleId: RegExp | string) => boolean; // The function to exclude aggregated externals, if the function returns true, the module will be excluded.
+  // Project root directory
+  projectCwd?: string;
+  // Path to tsconfig.json
+  tsconfig?: string;
+  // Additional plugins
+  plugins?: Plugin[];
+  // External dependencies to exclude
+  externals?: Array<RegExp | string>;
+  // The function to exclude aggregated externals, if the function returns true, the module will be excluded.
+  externalExclude?: (moduleId: RegExp | string) => boolean;
   // The function to create your custom loaders.
   createLoaders?: (
     options?: LoaderOptions,
     searchFrom?: string
-  ) => Record<string, Loader>;
+  ) => ConfigLoaders;
 }
 ```
 
@@ -221,7 +226,8 @@ import { searchConfig } from '@hyperse/config-loader';
 
 // Example 1: Basic usage with string patterns
 const result1 = await searchConfig('myapp', undefined, {
-  externals: [/node_modules/], // Default external pattern
+  // Default external pattern
+  externals: ['@hyperse/ts-node'],
   externalExclude: (moduleId) => {
     // Don't exclude modules that match these patterns
     if (typeof moduleId === 'string') {
@@ -235,7 +241,8 @@ const result1 = await searchConfig('myapp', undefined, {
 
 // Example 2: Advanced usage with RegExp patterns
 const result2 = await searchConfig('myapp', undefined, {
-  externals: [/node_modules/, /^@vendor\//], // Multiple external patterns
+  // Multiple external patterns
+  externals: ['@hyperse/ts-node', /^@vendor\//],
   externalExclude: (moduleId) => {
     if (typeof moduleId === 'string') {
       // Exclude specific packages from being marked as external
