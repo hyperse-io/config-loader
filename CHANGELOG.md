@@ -1,5 +1,11 @@
 # @hyperse/config-loader
 
+## 1.0.5
+
+### Patch Changes
+
+- [`b2d1564`](https://github.com/hyperse-io/config-loader/commit/b2d15643be0f05bd489554a88cc9af5bafb42fde) Thanks [@tianyingchun](https://github.com/tianyingchun)! - improved typings & docs
+
 ## 1.0.4
 
 ### Patch Changes

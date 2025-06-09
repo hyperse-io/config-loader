@@ -1,6 +1,6 @@
 {
   "name": "@hyperse/config-loader",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "A TypeScript path alias resolver for Node.js applications that works seamlessly with both development (config-loader) and production environments. This package automatically resolves path aliases based on your `tsconfig.json` configuration, eliminating the need for complex relative imports.",
   "keywords": [
     "hyperse",
