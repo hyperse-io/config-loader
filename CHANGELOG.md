@@ -1,5 +1,11 @@
 # @hyperse/config-loader
 
+## 1.0.4
+
+### Patch Changes
+
+- [`d15442e`](https://github.com/hyperse-io/config-loader/commit/d15442ef28aeadf006287cd1602da1bf84005335) Thanks [@tianyingchun](https://github.com/tianyingchun)! - expose `externalExclude` to excludes aggregated externals
+
 ## 1.0.3
 
 ### Patch Changes
