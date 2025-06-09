@@ -212,6 +212,114 @@ interface LoaderOptions {
 }
 ```
 
+#### Custom Loaders Options
+
+`externalExclude` - A function to exclude specific modules from being marked as external. Takes a module ID (string or RegExp) and returns true if the module should be excluded from externalization. This is useful for keeping certain dependencies bundled even if they match the external patterns.
+
+```typescript
+import { searchConfig } from '@hyperse/config-loader';
+
+// Example 1: Basic usage with string patterns
+const result1 = await searchConfig('myapp', undefined, {
+  externals: [/node_modules/], // Default external pattern
+  externalExclude: (moduleId) => {
+    // Don't exclude modules that match these patterns
+    if (typeof moduleId === 'string') {
+      return !(
+        moduleId.includes('@myorg/') || moduleId.includes('my-local-package')
+      );
+    }
+    return true;
+  },
+});
+
+// Example 2: Advanced usage with RegExp patterns
+const result2 = await searchConfig('myapp', undefined, {
+  externals: [/node_modules/, /^@vendor\//], // Multiple external patterns
+  externalExclude: (moduleId) => {
+    if (typeof moduleId === 'string') {
+      // Exclude specific packages from being marked as external
+      return (
+        moduleId.includes('@myorg/shared-utils') ||
+        moduleId.includes('internal-tools')
+      );
+    }
+    // For RegExp patterns, check specific module names
+    return (
+      moduleId.test('@myorg/shared-utils') || moduleId.test('internal-tools')
+    );
+  },
+});
+```
+
+`createLoaders` - You can create custom loaders to handle specific file formats or add custom loading logic. Here's an example of how to create a custom loader for `.toml` files:
+
+```typescript
+import { readFile } from 'fs/promises';
+import {
+  type ConfigLoaders,
+  type LoaderOptions,
+  searchConfig,
+} from '@hyperse/config-loader';
+import { parse } from '@iarna/toml';
+
+// Create a custom loader for TOML files
+const createTomlLoader = (
+  options?: LoaderOptions,
+  searchFrom?: string
+): ConfigLoaders => {
+  return {
+    '.toml': async (filepath: string) => {
+      try {
+        const content = await readFile(filepath, 'utf-8');
+        const config = parse(content);
+        return { config, filepath };
+      } catch (error) {
+        throw new Error(
+          `Failed to load TOML config from ${filepath}: ${error.message}`
+        );
+      }
+    },
+  };
+};
+
+// Use the custom loader
+const result = await searchConfig('myapp', undefined, {
+  createLoaders: createTomlLoader,
+});
+```
+
+You can also reuse existed loaders `@hyperse/config-loader`
+
+```typescript
+import type { ConfigLoaders, LoaderOptions } from '@hyperse/config-loader';
+import { searchConfig, tsLoader } from '@hyperse/config-loader';
+
+// Create a custom loader for TOML files
+function createJsLoader(
+  options?: LoaderOptions,
+  searchFrom?: string
+): ConfigLoaders {
+  return {
+    // Override JavaScript file resolver using tsLoader for better TypeScript support
+    '.js': async (path: string, content: string) => {
+      const { projectCwd, ...restLoaderOptions } = options || {};
+      return tsLoader({
+        plugins: [],
+        externals: [],
+        ...restLoaderOptions,
+        projectCwd: projectCwd || searchFrom,
+      })(path, content);
+    },
+  };
+}
+
+// Use the custom loader
+const result = await searchConfig('myapp', undefined, {
+  createLoaders: createJsLoader,
+});
+```
+
 ### Supported File Formats
 
 The config loader supports the following file formats:

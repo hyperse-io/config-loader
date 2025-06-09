@@ -1,11 +1,14 @@
-import type { Loader } from 'cosmiconfig';
 import { tsLoader } from '../loaders/tsLoader.js';
-import { type LoaderOptions } from '../types.js';
+import {
+  type ConfigLoader,
+  type ConfigLoaders,
+  type LoaderOptions,
+} from '../types.js';
 
 export const createLoaders = (
   options?: LoaderOptions,
   searchFrom?: string
-): Record<string, Loader> => {
+): ConfigLoaders => {
   const overrideLoaders = options?.createLoaders?.(options, searchFrom);
 
   return {
@@ -15,7 +18,10 @@ export const createLoaders = (
   };
 };
 
-function createTsLoader(options?: LoaderOptions, searchFrom?: string): Loader {
+function createTsLoader(
+  options?: LoaderOptions,
+  searchFrom?: string
+): ConfigLoader {
   return async (path: string, content: string) => {
     const { projectCwd, ...restLoaderOptions } = options || {};
     return tsLoader({

@@ -9,6 +9,20 @@ export type ConfigLoadResult<T> = Omit<CosmiconfigResult, 'config'> & {
   config: T;
 };
 
+/**
+ * The type of the config loader.
+ * @see https://github.com/cosmiconfig/cosmiconfig?tab=readme-ov-file#loaders
+ */
+export type ConfigLoader = Loader;
+
+/**
+ * Define the type of the config loaders.
+ */
+export type ConfigLoaders = Record<string, ConfigLoader>;
+
+/**
+ * The options for the config loader.
+ */
 export type LoaderOptions = {
   /**
    * The current working directory of the project.
@@ -42,7 +56,7 @@ export type LoaderOptions = {
   createLoaders?: (
     options?: LoaderOptions,
     searchFrom?: string
-  ) => Record<string, Loader>;
+  ) => ConfigLoaders;
 };
 
 export type _DeepPartial<T> = T extends (...args: any[]) => any
