@@ -289,7 +289,7 @@ const result = await searchConfig('myapp', undefined, {
 });
 ```
 
-You can also reuse existed loaders `@hyperse/config-loader`
+You can also reuse existing loaders from `@hyperse/config-loader`. The package exports several built-in loaders like `tsLoader`, `jsonLoader`, and `yamlLoader` that you can compose together to create custom loading behavior.
 
 ```typescript
 import type { ConfigLoaders, LoaderOptions } from '@hyperse/config-loader';
