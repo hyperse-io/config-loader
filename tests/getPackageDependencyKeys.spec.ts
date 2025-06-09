@@ -117,4 +117,35 @@ describe('getPackageDependencyKeys', () => {
 
     expect(getPackages).toHaveBeenCalledWith(customCwd);
   });
+
+  it('should exclude external modules passed as arguments', async () => {
+    const mockPackages = {
+      packages: [
+        {
+          packageJson: {
+            dependencies: {
+              react: '^18.0.0',
+              'react-dom': '^18.0.0',
+            },
+            devDependencies: {
+              typescript: '^4.0.0',
+            },
+          },
+        },
+      ],
+    };
+
+    (getPackages as any).mockResolvedValue(mockPackages);
+
+    const externals = ['react', 'typescript'];
+    const externalExclude = (moduleId: RegExp | string) =>
+      moduleId === 'typescript';
+    const result = await getPackageDependencyKeys(
+      process.cwd(),
+      externals,
+      externalExclude
+    );
+
+    expect(result).toEqual(['react', 'react-dom']);
+  });
 });

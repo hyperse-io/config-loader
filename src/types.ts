@@ -29,7 +29,12 @@ export type LoaderOptions = {
    * The rollup externals to use for the config loader.
    * @default []
    */
-  externals: Array<RegExp | string>;
+  externals?: Array<RegExp | string>;
+  /**
+   * The function to exclude aggregated externals, if the function returns true, the module will be excluded.
+   * @default undefined
+   */
+  externalExclude?: (moduleId: RegExp | string) => boolean;
   /**
    * The function to create the loaders.
    * @default undefined

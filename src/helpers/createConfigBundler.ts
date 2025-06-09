@@ -11,7 +11,8 @@ export const createConfigBundler: (
 ) => Promise<ConfigBundler> = async (options) => {
   const repoExternalModules = await getPackageDependencyKeys(
     options.projectCwd,
-    options.externals
+    options.externals,
+    options.externalExclude
   );
 
   const tsconfig = getTsconfig(options.tsconfig);

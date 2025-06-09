@@ -202,7 +202,8 @@ interface LoaderOptions {
   projectCwd?: string; // Project root directory
   tsconfig?: string; // Path to tsconfig.json
   plugins?: Plugin[]; // Additional plugins
-  externals: Array<RegExp | string>; // External dependencies to exclude
+  externals?: Array<RegExp | string>; // External dependencies to exclude
+  externalExclude?: (moduleId: RegExp | string) => boolean; // The function to exclude aggregated externals, if the function returns true, the module will be excluded.
   // The function to create your custom loaders.
   createLoaders?: (
     options?: LoaderOptions,
