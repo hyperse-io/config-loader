@@ -1,6 +1,5 @@
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
-
 /**
  * Provider method to simulate __dirname veriable.
  * @param url import.meta.url
