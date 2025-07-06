@@ -1,5 +1,11 @@
 # @hyperse/config-loader
 
+## 1.0.6
+
+### Patch Changes
+
+- [`b483918`](https://github.com/hyperse-io/config-loader/commit/b483918d2275a141a993b3ae671cfa64fd05f39b) Thanks [@tianyingchun](https://github.com/tianyingchun)! - migrate `mergeOptions` to @hyperse/deep-merge
+
 ## 1.0.5
 
 ### Patch Changes
