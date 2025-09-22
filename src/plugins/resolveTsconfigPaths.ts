@@ -1,14 +1,8 @@
 import { createPathsMatcher, type TsConfigResult } from 'get-tsconfig';
 import type { Plugin } from 'rollup';
+import { isAbsolute, isImports, isRelative } from './utils.js';
 
 const name = 'hps-resolve-tsconfig-paths';
-
-const isRelative = (filePath: string) => filePath[0] === '.';
-
-const isAbsolute = (filePath: string) =>
-  filePath[0] === '/' || /^[\s\S]:/.test(filePath);
-
-const isImports = (filePath: string) => filePath[0] === '#';
 
 const testFileExtensions = [
   '.js',

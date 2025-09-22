@@ -11,8 +11,7 @@ export const createConfigBundler: (
 ) => Promise<ConfigBundler> = async (options) => {
   const repoExternalModules = await getPackageDependencyKeys(
     options.projectCwd,
-    options.externals,
-    options.externalExclude
+    options.externals
   );
 
   const tsconfig = getTsconfig(options.tsconfig);
@@ -28,7 +27,7 @@ export const createConfigBundler: (
         cache: false,
         plugins: [
           // Keep externalizeNodeModules plugin first, to externalize all external modules.
-          externalizeNodeModules(repoExternalModules),
+          externalizeNodeModules(repoExternalModules, options.externalExclude),
           // keep correct order, make tsPaths resolver plugin after externalizeNodeModules plugin
           ...(tsconfig ? [resolveTsconfigPaths(tsconfig)] : []),
           // swc plugin

@@ -137,15 +137,9 @@ describe('getPackageDependencyKeys', () => {
 
     (getPackages as any).mockResolvedValue(mockPackages);
 
-    const externals = ['react', 'typescript'];
-    const externalExclude = (moduleId: RegExp | string) =>
-      moduleId === 'typescript';
-    const result = await getPackageDependencyKeys(
-      process.cwd(),
-      externals,
-      externalExclude
-    );
+    const externals = ['react', 'react-dom', 'typescript'];
+    const result = await getPackageDependencyKeys(process.cwd(), externals);
 
-    expect(result).toEqual(['react', 'react-dom']);
+    expect(result).toEqual(['react', 'react-dom', 'typescript']);
   });
 });

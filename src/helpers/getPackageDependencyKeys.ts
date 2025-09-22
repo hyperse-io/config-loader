@@ -9,8 +9,7 @@ function arrayUnique<T>(arr: T[]): T[] {
 
 export const getPackageDependencyKeys = async (
   cwd = process.cwd(),
-  externals: Array<RegExp | string> = [],
-  externalExclude?: (moduleId: RegExp | string) => boolean
+  externals: Array<RegExp | string> = []
 ) => {
   const externalModules: Array<RegExp | string> = [...externals];
 
@@ -25,10 +24,5 @@ export const getPackageDependencyKeys = async (
       })
     );
   }
-  return arrayUnique(externalModules).filter((moduleId) => {
-    if (externalExclude) {
-      return !externalExclude(moduleId);
-    }
-    return true;
-  });
+  return arrayUnique(externalModules);
 };
