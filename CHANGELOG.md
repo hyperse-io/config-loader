@@ -1,5 +1,11 @@
 # @hyperse/config-loader
 
+## 1.0.7
+
+### Patch Changes
+
+- [`02eb4ac`](https://github.com/hyperse-io/config-loader/commit/02eb4ac8fc1c5bdfa48bf481ed90aec18f20eef0) Thanks [@tyc15129](https://github.com/tyc15129)! - fix `externalExclude` issue
+
 ## 1.0.6
 
 ### Patch Changes
