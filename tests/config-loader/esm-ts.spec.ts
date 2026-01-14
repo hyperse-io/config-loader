@@ -41,6 +41,22 @@ describe('ESM-TS config loader tests', () => {
       );
       expect(loadedCfg).toBeNull();
     });
+
+    it('should load an env .ts config file', async () => {
+      const loadedCfg = await loadConfig<{
+        cake: string;
+      }>(join(fixturesPath, 'env.valid.ts'), loaderOptions);
+      expect(typeof loadedCfg?.config).toBe('object');
+      expect(loadedCfg?.config.cake).toBe('a lie env');
+    });
+
+    it('should load an env .mts config file', async () => {
+      const loadedCfg = await loadConfig<{
+        cake: string;
+      }>(join(fixturesPath, 'env.valid.mts'), loaderOptions);
+      expect(typeof loadedCfg?.config).toBe('object');
+      expect(loadedCfg?.config.cake).toBe('a lie env mts');
+    });
   });
 
   describe('searchConfig', () => {
@@ -82,6 +98,24 @@ describe('ESM-TS config loader tests', () => {
         };
       }>('named-exports', fixturesPath, loaderOptions);
       expect(loadedCfg?.config.test.cake).toBe('a lie');
+    });
+
+    it('should search and load an env .ts config file', async () => {
+      const envTestPath = join(fixturesPath, 'env-test');
+      const loadedCfg = await searchConfig<{
+        cake: string;
+      }>('valid', envTestPath, loaderOptions);
+      expect(typeof loadedCfg?.config).toBe('object');
+      expect(loadedCfg?.config.cake).toBe('a lie env');
+    });
+
+    it('should search and load an env .mts config file when .ts file does not exist', async () => {
+      const envMtsTestPath = join(fixturesPath, 'env-mts-test');
+      const loadedCfg = await searchConfig<{
+        cake: string;
+      }>('valid', envMtsTestPath, loaderOptions);
+      expect(typeof loadedCfg?.config).toBe('object');
+      expect(loadedCfg?.config.cake).toBe('a lie env mts');
     });
   });
 });

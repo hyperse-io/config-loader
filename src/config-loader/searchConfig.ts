@@ -30,6 +30,9 @@ export const searchConfig = async <T = any>(
       `.${moduleName}rc.ts`,
       `${moduleName}.config.ts`,
       `${moduleName}.config.mts`,
+      // ENV
+      `env.${moduleName}.ts`,
+      `env.${moduleName}.mts`,
     ],
     loaders: createLoaders(options, searchFrom),
   });
