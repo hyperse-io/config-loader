@@ -1,5 +1,11 @@
 # @hyperse/config-loader
 
+## 1.0.8
+
+### Patch Changes
+
+- [#10](https://github.com/hyperse-io/config-loader/pull/10) [`f76d982`](https://github.com/hyperse-io/config-loader/commit/f76d98238866509ec79f5deea018c21484f795e1) Thanks [@tclxshunquan-wang](https://github.com/tclxshunquan-wang)! - chore: 🤖 update dependencies and add support for env config files
+
 ## 1.0.7
 
 ### Patch Changes
