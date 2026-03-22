@@ -22,19 +22,16 @@ export const externalizeNodeModules = (
         return undefined;
       }
 
-      let isExternal = false;
-      if (externalExclude) {
-        isExternal = !externalExclude(moduleId);
-      } else {
-        isExternal = isExternalModule(externalModules, moduleId);
-      }
+      const isExternal = externalExclude
+        ? !externalExclude(moduleId)
+        : isExternalModule(externalModules, moduleId);
       // If module is not external, return null to let other plugins to resolve it.
       if (!isExternal) {
         return null;
       }
       return {
         id: moduleId,
-        external: !!isExternal,
+        external: true,
       };
     },
   };
