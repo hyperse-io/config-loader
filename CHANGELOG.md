@@ -1,5 +1,11 @@
 # @hyperse/config-loader
 
+## 1.0.9
+
+### Patch Changes
+
+- [`720a7e1`](https://github.com/hyperse-io/config-loader/commit/720a7e1fa4d43d2e8edce032e30b5758f2e1e1f3) Thanks [@tianyingchun](https://github.com/tianyingchun)! - update package dependencies and versions in package.json and yarn.lock
+
 ## 1.0.8
 
 ### Patch Changes
