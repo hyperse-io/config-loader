@@ -1,7 +1,6 @@
 {
   "extends": "@hyperse/eslint-config-hyperse/tsconfig.base.json",
   "compilerOptions": {
-    "baseUrl": "./",
     "outDir": "dist",
     "rootDir": ".",
     "types": ["vitest/globals", "node"],
